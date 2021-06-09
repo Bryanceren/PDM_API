@@ -11,10 +11,19 @@ var apiRouter = require('./routes/api');
 var app = express();
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/buscadores-wep', { useNewUrlParser: true })
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://admin:admin@cluster0.m8imy.mongodb.net/bebidas?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+mongoose.connect('mongodb+srv://admin:admin@cluster0.m8imy.mongodb.net/Bebidas?retryWrites=true&w=majority', { useNewUrlParser: true })
 .then(()=> { console.log("La conexion con la base de datos fue exitosa")})
 .catch((err)=>{console.log("Hubo un error en la conexion con la base: " + err)});
-// view engine setup
+
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -25,7 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/api/coin', apiRouter);
+app.use('/api/bebida', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

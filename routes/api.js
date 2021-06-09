@@ -4,10 +4,10 @@ var SearchManager = require('../Controllers/SearchManager');
 
 router.get('/', SearchManager.getBuscadores);
 router.get('/id/:id', SearchManager.getBuscador);
-router.get('/country/:country', SearchManager.getBuscadorCountry);
-router.get('/year/:year', SearchManager.getBuscadorYear);
-router.get('/available/:available', SearchManager.getBuscadorAvailable);
+router.get('/nombre/:nombre', SearchManager.getBuscadorNombre);
+router.get('/precio/:precio', SearchManager.getBuscadorPrecio);
 
+router.delete('/:id', SearchManager.delete);
 router.post('/', SearchManager.create);
 
 
