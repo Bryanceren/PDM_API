@@ -12,7 +12,7 @@ SearchManager.create = (req, res, next) =>{
         if(error) return res.status(500).json({status:500, success: false, message:"Error interno del servidor"});
 
         if(buscador){
-            return res.status(200).json({status:200, success: true, message:"Buscador guardado correctamente en el sistema", buscador});
+            return res.status(200).json(buscador);
         }else{
             return res.status(404).json({status:404, success: false, message:"Error al guardar el nuevo buscador", buscador});
         }
@@ -26,7 +26,7 @@ SearchManager.getBuscador = (req, res, next) =>{
         if(error) return res.status(500).json({status:500, success: false, message:"Error interno del servidor"});
 
         if(buscador){
-            return res.status(200).json({status:200, success: true, message:"Buscador web encontrado", buscador});
+            return res.status(200).json(buscador);
         }else{
             return res.status(404).json({status:404, success: false, message:"No se encontro buscador"});
         }
@@ -38,7 +38,7 @@ SearchManager.getBuscadores = (req, res, next) =>{
         if(error) return res.status(500).json({status:500, success: false, message:"Error interno del servidor"});
 
         if(buscadores){
-            return res.status(200).json({status:200, success: true, message:"Peticion de buscadores realizada con exito", buscadores});
+            return res.status(200).json(buscadores);
         }else{
             return res.status(404).json({status:404, success: false, message:"No se encontraron buscadores"});
         }

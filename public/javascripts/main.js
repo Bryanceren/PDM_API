@@ -39,7 +39,8 @@ function getBuscadores(){
             console.log("Error en la peticion");
         },
         success: function(response){
-            response.buscadores.forEach(buscador => {
+            console.log(response);
+            response.forEach(buscador => {
                 rowBuscador += createRow(buscador);
             });
 
@@ -65,8 +66,8 @@ function createBuscador(){
         },
 
         success: function(response){
-            if(response.success){
-                var row = createRow(response.buscador);
+            if(response){
+                var row = createRow(response);
                 $("#nombre").val("");
                 $("#imagen").val("");
                 $("#precio").val("");
@@ -74,7 +75,7 @@ function createBuscador(){
                 $("tbody").append(row);
                 
             }else{
-                console.log(response.message);
+                console.log("ocurrio un error creando");
             }
         }
     });
@@ -91,10 +92,10 @@ function deleteBuscador(id){
         },
 
         success: function(response){
-            if(response.success){
+            if(response){
                 getBuscadores();
             }else{
-                console.log(response.message);
+                console.log("ocurrio un error eliminando");
             }
         }
     })
